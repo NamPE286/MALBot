@@ -76,7 +76,7 @@ class Anime {
                         for (const i of this.data.titles) {
                             res.push(i.title)
                         }
-                        res.unshift()
+                        res = res.unshift()
                         return res.join(', ')
                     })()
                 },
@@ -91,7 +91,6 @@ class Anime {
                         for (const i of this.data.producers) {
                             res.push(i.name)
                         }
-                        res = res.unshift()
                         return res.join(', ')
                     })()
                 },
