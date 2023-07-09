@@ -1,0 +1,59 @@
+[
+    {
+        "name": "Action"
+    },
+    {
+        "name": "Adventure"
+    },
+    {
+        "name": "Avant Garde"
+    },
+    {
+        "name": "Award Winning"
+    },
+    {
+        "name": "Boys Love"
+    },
+    {
+        "name": "Comedy"
+    },
+    {
+        "name": "Drama"
+    },
+    {
+        "name": "Fantasy"
+    },
+    {
+        "name": "Girls Love"
+    },
+    {
+        "name": "Gourmet"
+    },
+    {
+        "name": "Horror"
+    },
+    {
+        "name": "Mystery"
+    },
+    {
+        "name": "Romance"
+    },
+    {
+        "name": "Sci-Fi"
+    },
+    {
+        "name": "Slice of Life"
+    },
+    {
+        "name": "Sports"
+    },
+    {
+        "name": "Supernatural"
+    },
+    {
+        "name": "Suspense"
+    },
+    {
+        "name": "Ecchi"
+    }
+]
