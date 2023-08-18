@@ -26,7 +26,7 @@ class Manga {
         if (genres.has('Hentai') || genres.has('Erotica')) {
             this.nsfw = true
         }
-        this.defaultTitle = res + ` (MAL ${this.id})`
+        this.defaultTitle = res + ` (MAL ${this.id}) (Manga)`
     }
     getSimplifiedGenres() {
         if (!this.data) {
