@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { Client, GatewayIntentBits, ChannelType, channelLink } = require('discord.js');
 const Anime = require('./classes/Anime');
+const Manga = require('./classes/Manga');
 
 const client = new Client({
     intents: [
@@ -11,7 +12,9 @@ const client = new Client({
 });
 
 function getID(link) {
-    link = link.replace(link.substring(0, link.indexOf('anime/') + 6), '')
+    const pos = link.indexOf('anime/') != -1 ? link.indexOf('anime/') : link.indexOf('manga/')
+    link = link.replace(link.substring(0, pos + 6), '')
+
     return link.split('/')[0]
 }
 
@@ -37,18 +40,26 @@ client.on('threadCreate', async (thread) => {
         return
     }
 
-    const anime = new Anime(getID(message.content))
-    await anime.init()
+    var item;
 
-    if (anime.nsfw === true) {
+    if(message.content.indexOf('anime/') != -1) {
+        item = new Anime(getID(message.content))
+    }
+    else {
+        item = new Manga(getID(message.content))
+    }
+    
+    await item.init()
+
+    if (item.nsfw === true) {
         await thread.delete()
         return
     }
 
-    await thread.setName(anime.defaultTitle)
-    await thread.setAppliedTags(anime.getGenreTagsSnowflake(thread.parent.availableTags))
+    await thread.setName(item.defaultTitle)
+    await thread.setAppliedTags(item.getGenreTagsSnowflake(thread.parent.availableTags))
 
-    thread.send({ embeds: [anime.getDiscordEmbed()] })
+    thread.send({ embeds: [item.getDiscordEmbed()] })
 })
 
 client.login(process.env.DISCORD_TOKEN)
